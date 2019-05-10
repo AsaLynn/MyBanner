@@ -201,7 +201,7 @@ public class XmBanner extends FrameLayout implements OnPageChangeListener {
     }
 
     /**
-     * Set a {@link PageTransformer} that will be called for each attached page whenever
+     * Set a  that will be called for each attached page whenever
      * the scroll position is changed. This allows the application to apply custom property
      * transformations to each page, overriding the default sliding look and feel.
      *
@@ -485,7 +485,7 @@ public class XmBanner extends FrameLayout implements OnPageChangeListener {
     /**
      * 返回真实的位置
      *
-     * @param position
+     * @param position position
      * @return 下标从0开始
      */
     public int toRealPosition(int position) {
@@ -599,12 +599,6 @@ public class XmBanner extends FrameLayout implements OnPageChangeListener {
     }
 
 
-    /**
-     * 废弃了旧版接口，新版的接口下标是从1开始，同时解决下标越界问题
-     *
-     * @param listener
-     * @return
-     */
     public XmBanner setOnBannerListener(OnBannerListener listener) {
         this.listener = listener;
         return this;
