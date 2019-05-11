@@ -3,9 +3,11 @@
     package="com.zxn.mybanner">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
 
     <application
+        android:usesCleartextTraffic="true"
         android:name="com.zxn.mybanner.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -26,8 +28,8 @@
         <activity android:name="com.zxn.mybanner.demo.CustomBannerActivity" />
         <activity android:name="com.zxn.mybanner.demo.BannerLocalActivity" />
         <activity
-            android:screenOrientation="portrait"
-            android:name="com.zxn.mybanner.demo.CustomViewPagerActivity"/>
+            android:name="com.zxn.mybanner.demo.CustomViewPagerActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

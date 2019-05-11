@@ -28,6 +28,7 @@ dependencies {
     implementation project(path: ':xmbanner')
 //    implementation "com.github.bumptech.glide:glide:3.7.0"
     implementation "com.github.bumptech.glide:glide:4.8.0"
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
 //    implementation 'com.facebook.fresco:fresco:0.12.0'
     implementation 'com.facebook.fresco:fresco:1.11.0'
     implementation 'com.zxy.android:recovery:0.0.8'
