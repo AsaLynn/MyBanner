@@ -49,7 +49,7 @@ public class BannerStyleActivity extends AppCompatActivity implements  AdapterVi
                 banner.updateBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
                 break;
             case 5:
-                banner.updateBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
+                banner.updateBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
                 break;
         }
     }
