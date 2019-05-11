@@ -73,6 +73,7 @@ public class XmBanner extends FrameLayout implements OnPageChangeListener {
     private DisplayMetrics dm;
 
     private WeakHandler handler = new WeakHandler();
+//    private int mBannerType;
 
     public XmBanner(Context context) {
         this(context, null);
@@ -176,6 +177,19 @@ public class XmBanner extends FrameLayout implements OnPageChangeListener {
         return this;
     }
 
+//    /**
+//     * @hide
+//     */
+//    @IntDef({BANNER_IMAGE, BANNER_VIEW})
+//    @Retention(RetentionPolicy.SOURCE)
+//    public @interface BannerType {
+//    }
+
+//    public XmBanner setBannerType(@BannerType int type) {
+//        mBannerType = type;
+//        return this;
+//    }
+
     public XmBanner setBannerAnimation(Class<? extends PageTransformer> transformer) {
         try {
             setPageTransformer(true, transformer.newInstance());
@@ -201,7 +215,7 @@ public class XmBanner extends FrameLayout implements OnPageChangeListener {
     }
 
     /**
-     * Set a  that will be called for each attached page whenever
+     * Set a {@link PageTransformer} that will be called for each attached page whenever
      * the scroll position is changed. This allows the application to apply custom property
      * transformations to each page, overriding the default sliding look and feel.
      *
@@ -236,6 +250,13 @@ public class XmBanner extends FrameLayout implements OnPageChangeListener {
         return this;
     }
 
+    public XmBanner setTitleTextColor(int color) {
+        this.titleTextColor = color;
+        bannerTitle.setTextColor(titleTextColor);
+        return this;
+    }
+
+
     public void update(List<?> imageUrls, List<String> titles) {
         this.titles.clear();
         this.titles.addAll(titles);
@@ -264,9 +285,48 @@ public class XmBanner extends FrameLayout implements OnPageChangeListener {
 
     public XmBanner start() {
         setBannerStyleUI();
+//        if (mBannerType == BANNER_VIEW) {
+//            setViewList(imageUrls);
+//        } else {
+//            setImageList(imageUrls);
+//        }
         setImageList(imageUrls);
         setData();
         return this;
+    }
+
+    private void setViewList(List imagesUrl) {
+        if (imagesUrl == null || imagesUrl.size() <= 0) {
+            bannerDefaultImage.setVisibility(VISIBLE);
+            Log.e(tag, "The image data set is empty.");
+            return;
+        }
+        bannerDefaultImage.setVisibility(GONE);
+        initImages();
+        for (int i = 0; i <= count + 1; i++) {
+            View view = null;
+            if (imageLoader != null) {
+                view = imageLoader.createImageView(context);
+            }
+            if (view == null) {
+                view = new View(context);
+            }
+            //setScaleType(imageView);
+            Object url = null;
+            if (i == 0) {
+                url = imagesUrl.get(count - 1);
+            } else if (i == count + 1) {
+                url = imagesUrl.get(0);
+            } else {
+                url = imagesUrl.get(i - 1);
+            }
+            imageViews.add(view);
+            if (imageLoader != null)
+                imageLoader.displayImage(context, url, view);
+            else
+                Log.e(tag, "Please set images loader.");
+        }
+
     }
 
     private void setTitleStyleUI() {
@@ -485,7 +545,7 @@ public class XmBanner extends FrameLayout implements OnPageChangeListener {
     /**
      * 返回真实的位置
      *
-     * @param position position
+     * @param position
      * @return 下标从0开始
      */
     public int toRealPosition(int position) {
@@ -599,6 +659,12 @@ public class XmBanner extends FrameLayout implements OnPageChangeListener {
     }
 
 
+    /**
+     * 废弃了旧版接口，新版的接口下标是从1开始，同时解决下标越界问题
+     *
+     * @param listener
+     * @return
+     */
     public XmBanner setOnBannerListener(OnBannerListener listener) {
         this.listener = listener;
         return this;
