@@ -1,7 +1,7 @@
 package com.zxn.mybanner.demo;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.zxn.mybanner.R;
 import com.zxn.mybanner.loader.GlideImageLoader;

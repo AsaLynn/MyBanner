@@ -1,15 +1,14 @@
 package com.zxn.mybanner.demo;
 
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 
-import com.zxn.mybanner.App;
 import com.zxn.mybanner.R;
 import com.zxn.mybanner.SampleAdapter;
 import com.zxn.mybanner.loader.GlideImageLoader;
