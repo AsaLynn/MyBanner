@@ -113,7 +113,8 @@
 Gradle 
 ```groovy
 dependencies{
-    implementation 'com.zxn.xmbanner:xmbanner:1.0.1'
+    implementation 'com.zxn.xmbanner:xmbanner:1.0.2'
+    //implementation 'com.zxn.xmbanner:xmbanner:1.0.1'
 }
 ```
 或者引用本地lib
